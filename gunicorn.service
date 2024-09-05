@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn service
+After=network.target
+
+[Service]
+User=dj
+Group=www-data
+WorkingDirectory=/opt/djprj/webpython
+ExecStart=/opt/djprj/env/bin/gunicorn -w 3 -b unix:/opt/djprj/webpython/prj.soc webpython.wsgi
+
+[Install]
+WantedBy=multi-user.target
